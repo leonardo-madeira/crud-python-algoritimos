@@ -11,11 +11,11 @@ def cadastrar_atualizar_cliente():
     print("Cadastro de Cliente")
     print("---------------------")
     print("Preencha os dados a seguir:")
-    nome = input("Digite seu nome: ")
-    email = input("Digite seu email: ")
-    telefone = input("Digite seu telefone celular: ")
-    cpf = input("Digite seu CPF: ")
-    endereco = input("Digite seu endereço: ")
+    nome = input("Digite o nome: ")
+    email = input("Digite o email: ")
+    telefone = input("Digite o telefone celular (ex: \"43984117891\"): ")
+    cpf = input("Digite o CPF: (ex: \"28057183055\") ")
+    endereco = input("Digite o endereço: ")
 
     if cpf.isdigit() and len(cpf) == 11 and telefone.isdigit() and len(telefone) == 11:
         if "@" in email and "." in email:
@@ -48,10 +48,10 @@ if __name__ == "__main__":
         print("3. Atualizar cliente")
         print("4. Deletar cliente")
         print("5. Sair")
-        opcao = int(input("Digite sua opção: "))
+        opcao = input("Digite sua opção: ")
 
 
-        if opcao == 1:
+        if opcao == "1":
             dado = cadastrar_atualizar_cliente()
             if dado:
                 banco_de_dados.append(dado)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
             if voltar: continue 
             else: exit()
     
-        elif opcao == 2:
+        elif opcao == "2":
             if banco_de_dados:
                 listar_clientes(banco_de_dados)       
             else:
@@ -73,8 +73,9 @@ if __name__ == "__main__":
             if voltar: continue 
             else: exit()
 
-        elif opcao == 3:
+        elif opcao == "3":
             cpf_cliente = input("Digite o cpf do cliente que será alterado: ")
+            encontrado = False
             for i,pessoa in enumerate(banco_de_dados):
                 if pessoa[3] == cpf_cliente:
                     encontrado = True
@@ -99,7 +100,7 @@ if __name__ == "__main__":
                     if voltar: continue 
                     else: exit()  
 
-        elif opcao == 4:
+        elif opcao == "4":
             cpf_cliente = input("Digite o cpf do cliente que será deletado: ")
             for i,pessoa in enumerate(banco_de_dados):
                 if pessoa[3] == cpf_cliente:
@@ -123,7 +124,7 @@ if __name__ == "__main__":
                 if voltar: continue 
                 else: exit()
 
-        elif opcao == 5:
+        elif opcao == "5":
             print("Saindo do sistema...")
             exit()
 
